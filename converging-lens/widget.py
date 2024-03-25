@@ -18,10 +18,12 @@ scale = tk.StringVar()
 
 def submited():
     
-    subprocess.run(["python", "main.py"])
-    data = [f.get(),AB.get(),OA.get(),scale.get()]
+    
+    data = [f.get(),AB.get(),OA.get()]
     file = open('data', 'wb')
     pickle.dump(data, file)
+    file.close()
+    subprocess.run(["python", "main.py"])
     
 signin = ttk.Frame(root)
 signin.pack(padx=10, pady=10, fill='x', expand=True)
@@ -46,12 +48,6 @@ OA_label.pack(fill='x', expand=True)
 
 OA_entry = ttk.Entry(signin, textvariable=OA)
 OA_entry.pack(fill='x', expand=True)
-
-scale_label = ttk.Label(signin, text="scale 1 (reality): x (screen)")
-scale_label.pack(fill='x', expand=True)
-
-scale_entry = ttk.Entry(signin, textvariable=scale)
-scale_entry.pack(fill='x', expand=True)
 
 submit_button = ttk.Button(signin, text="create schematic", command=submited)
 submit_button.pack(fill='x', expand=True, pady=10)
