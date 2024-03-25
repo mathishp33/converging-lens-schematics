@@ -1,7 +1,7 @@
 import pygame
 import pickle
 import math
-# Define some colors
+
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
@@ -9,15 +9,12 @@ RED = (255, 0, 0)
 YELLOW = (255,255,0)
 
 pygame.init()
- 
-# Set the width and height of the screen [width, height]
 WIDTH = 1900
 HEIGHT = 1000
 size = (WIDTH, HEIGHT)
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Physics : Chapter 7")
 running = True
-# Used to manage how fast the screen updates
 clock = pygame.time.Clock()
  
 file = open('data', 'rb')
@@ -34,7 +31,6 @@ x = (math.tan((90 - math.acos(Af/math.sqrt(AB**(2) + Af**(2))) * 180/math.pi)/18
 Af2 = OA2 - f
 x2 = (math.tan((90 - math.acos(Af2/math.sqrt(AB2**(2) + Af2**(2))) * 180/math.pi)/180*math.pi))* AB
 
-
 print("f' : ", f)
 print("AB : ", AB)
 print("A'B' : ", AB2)
@@ -43,19 +39,6 @@ print("OA' : ", OA2)
 print("gamma : ", gamma)
 print("vergence : ", (1/f))
 
-
-def regle2et3():
-    
-    pygame.draw.line(screen, YELLOW, (WIDTH/2 - OA,HEIGHT/2 - AB), (WIDTH/2 - f ,HEIGHT/2), 4) 
-    pygame.draw.line(screen, YELLOW, (WIDTH/2 - f ,HEIGHT/2), (WIDTH/2 - f + x,HEIGHT/2 + AB2), 4) 
-    pygame.draw.line(screen, YELLOW, (WIDTH/2 - f + x,HEIGHT/2 + AB2), (WIDTH/2 +OA2 ,HEIGHT/2 + AB2), 4) 
-    
-    pygame.draw.line(screen, YELLOW, (WIDTH/2 + OA2,HEIGHT/2 + AB2), (WIDTH/2 + f ,HEIGHT/2), 4) 
-    pygame.draw.line(screen, YELLOW, (WIDTH/2 + f ,HEIGHT/2), (WIDTH/2 + f - x2,HEIGHT/2 - AB), 4) 
-    pygame.draw.line(screen, YELLOW, (WIDTH/2 + f - x2,HEIGHT/2 - AB), (WIDTH/2 -OA2 ,HEIGHT/2 - AB), 4) 
-    
-
-
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -63,7 +46,6 @@ while running:
         if event.type == pygame.MOUSEBUTTONUP:
             click = True
             pos = pygame.mouse.get_pos()
-    
     
     screen.fill(BLACK)
     
@@ -76,12 +58,16 @@ while running:
     pygame.draw.line(screen, RED, (WIDTH/2 + OA2,HEIGHT/2), (WIDTH/2 + OA2,HEIGHT/2 + AB2), 4) #foyer image A'B'
     
     pygame.draw.line(screen, YELLOW, (WIDTH/2 - OA,HEIGHT//2 - AB), (WIDTH/2 + OA2,HEIGHT/2 + AB2), 4) #1ere regle
-    regle2et3()
+    pygame.draw.line(screen, YELLOW, (WIDTH/2 - OA,HEIGHT/2 - AB), (WIDTH/2 - f ,HEIGHT/2), 4) 
+    pygame.draw.line(screen, YELLOW, (WIDTH/2 - f ,HEIGHT/2), (WIDTH/2 - f + x,HEIGHT/2 + AB2), 4) 
+    pygame.draw.line(screen, YELLOW, (WIDTH/2 - f + x,HEIGHT/2 + AB2), (WIDTH/2 +OA2 ,HEIGHT/2 + AB2), 4) 
+    
+    pygame.draw.line(screen, YELLOW, (WIDTH/2 + OA2,HEIGHT/2 + AB2), (WIDTH/2 + f ,HEIGHT/2), 4) 
+    pygame.draw.line(screen, YELLOW, (WIDTH/2 + f ,HEIGHT/2), (WIDTH/2 + f - x2,HEIGHT/2 - AB), 4) 
+    pygame.draw.line(screen, YELLOW, (WIDTH/2 + f - x2,HEIGHT/2 - AB), (WIDTH/2 -OA ,HEIGHT/2 - AB), 4) 
     
     
     pygame.display.flip()
     click = False
     clock.tick(60)
-    
-
 pygame.quit()
