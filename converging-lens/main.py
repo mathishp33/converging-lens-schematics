@@ -26,8 +26,7 @@ data = pickle.load(file)
 f = float(data[0])
 AB = float(data[1])
 OA = float(data[2])
-scale = float(data[3])
-OA2 = (f*OA)/(f+OA)
+OA2 = (f*OA)/(-f+OA)
 gamma = OA2 / OA
 AB2 = AB * gamma
 Af = OA - f
@@ -36,21 +35,20 @@ Af2 = OA2 - f
 x2 = (math.tan((90 - math.acos(Af2/math.sqrt(AB2**(2) + Af2**(2))) * 180/math.pi)/180*math.pi))* AB
 
 
-print("values down below are already scaled : ")
-print("f' : ", f*scale)
-print("AB : ", AB*scale)
-print("A'B' : ", AB2*scale)
-print("OA : ", OA*scale)
-print("OA' : ", OA2*scale)
-print("gamma : ", gamma*scale)
-print("vergence : ", (1/f*scale))
+print("f' : ", f)
+print("AB : ", AB)
+print("A'B' : ", AB2)
+print("OA : ", OA)
+print("OA' : ", OA2)
+print("gamma : ", gamma)
+print("vergence : ", (1/f))
 
 
 def regle2et3():
     
-    pygame.draw.line(screen, YELLOW, (WIDTH/2 - OA,HEIGHT/2 - AB), (WIDTH//2 - f ,HEIGHT/2), 4) 
+    pygame.draw.line(screen, YELLOW, (WIDTH/2 - OA,HEIGHT/2 - AB), (WIDTH/2 - f ,HEIGHT/2), 4) 
     pygame.draw.line(screen, YELLOW, (WIDTH/2 - f ,HEIGHT/2), (WIDTH/2 - f + x,HEIGHT/2 + AB2), 4) 
-    pygame.draw.line(screen, YELLOW, (WIDTH/2 - f + x,HEIGHT/2 + AB2), (WIDTH/2 +OA ,HEIGHT/2 + AB2), 4) 
+    pygame.draw.line(screen, YELLOW, (WIDTH/2 - f + x,HEIGHT/2 + AB2), (WIDTH/2 +OA2 ,HEIGHT/2 + AB2), 4) 
     
     pygame.draw.line(screen, YELLOW, (WIDTH/2 + OA2,HEIGHT/2 + AB2), (WIDTH/2 + f ,HEIGHT/2), 4) 
     pygame.draw.line(screen, YELLOW, (WIDTH/2 + f ,HEIGHT/2), (WIDTH/2 + f - x2,HEIGHT/2 - AB), 4) 
