@@ -28,7 +28,7 @@ f = int(data[0])
 AB = int(data[1])
 OA = int(data[2])
 scale = int(data[3])
-OA2 = (f*-OA)//(f-OA)
+OA2 = (f*OA)/(f+OA)
 gamma = OA2 / OA
 AB2 = AB * gamma
 Af = OA - f
@@ -39,7 +39,7 @@ x2 = (math.tan((90 - math.acos(Af2/math.sqrt(AB2**(2) + Af2**(2))) * 180/math.pi
 
 print("values down below are already scaled : ")
 print("f' : ", f*scale)
-print("AB' : ", AB*scale)
+print("AB : ", AB*scale)
 print("A'B' : ", AB2*scale)
 print("OA : ", OA*scale)
 print("OA' : ", OA2*scale)
@@ -60,7 +60,6 @@ def regle2et3():
 
 
 while running:
-    # --- Main event loop
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
