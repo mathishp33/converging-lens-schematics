@@ -33,9 +33,9 @@ x2 = (math.tan((90 - math.acos(Af2/math.sqrt(AB2**(2) + Af2**(2))) * 180/math.pi
 
 print("f' : ", f)
 print("AB : ", AB)
-print("A'B' : ", AB2)
+print("A'B' : ", abs(AB2))
 print("OA : ", OA)
-print("OA' : ", OA2)
+print("OA' : ", abs(OA2))
 print("gamma : ", gamma)
 print("vergence : ", (1/f))
 
@@ -57,14 +57,19 @@ while running:
     pygame.draw.line(screen, WHITE, (WIDTH/2 + f,HEIGHT/2 - 20), (WIDTH/2 + f,HEIGHT/2 + 20), 4) #OF' = f'
     pygame.draw.line(screen, RED, (WIDTH/2 + OA2,HEIGHT/2), (WIDTH/2 + OA2,HEIGHT/2 + AB2), 4) #foyer image A'B'
     
-    pygame.draw.line(screen, YELLOW, (WIDTH/2 - OA,HEIGHT//2 - AB), (WIDTH/2 + OA2,HEIGHT/2 + AB2), 4) #1ere regle
-    pygame.draw.line(screen, YELLOW, (WIDTH/2 - OA,HEIGHT/2 - AB), (WIDTH/2 - f ,HEIGHT/2), 4) 
-    pygame.draw.line(screen, YELLOW, (WIDTH/2 - f ,HEIGHT/2), (WIDTH/2 - f + x,HEIGHT/2 + AB2), 4) 
-    pygame.draw.line(screen, YELLOW, (WIDTH/2 - f + x,HEIGHT/2 + AB2), (WIDTH/2 +OA2 ,HEIGHT/2 + AB2), 4) 
     
-    pygame.draw.line(screen, YELLOW, (WIDTH/2 + OA2,HEIGHT/2 + AB2), (WIDTH/2 + f ,HEIGHT/2), 4) 
-    pygame.draw.line(screen, YELLOW, (WIDTH/2 + f ,HEIGHT/2), (WIDTH/2 + f - x2,HEIGHT/2 - AB), 4) 
-    pygame.draw.line(screen, YELLOW, (WIDTH/2 + f - x2,HEIGHT/2 - AB), (WIDTH/2 -OA ,HEIGHT/2 - AB), 4) 
+    if f>OA:
+        pygame.draw.line(screen, YELLOW, (WIDTH/2 + OA2,HEIGHT/2 + AB2), (WIDTH/2 ,HEIGHT/2), 4) #1ere regle
+        pygame.draw.line(screen, YELLOW, (WIDTH/2 - OA,HEIGHT/2 - AB), (WIDTH/2 ,HEIGHT/2 - AB), 4) #2eme et 3eme regle
+        pygame.draw.line(screen, YELLOW, (WIDTH/2 +f,HEIGHT/2 ), (WIDTH/2 + OA2,HEIGHT/2 + AB2), 4)
+    else:
+        pygame.draw.line(screen, YELLOW, (WIDTH/2 - OA,HEIGHT/2 - AB), (WIDTH/2 + OA2,HEIGHT/2 + AB2), 4) #1ere regle
+        pygame.draw.line(screen, YELLOW, (WIDTH/2 - OA,HEIGHT/2 - AB), (WIDTH/2 - f ,HEIGHT/2), 4) #2eme regle
+        pygame.draw.line(screen, YELLOW, (WIDTH/2 - f ,HEIGHT/2), (WIDTH/2 - f + x,HEIGHT/2 + AB2), 4) 
+        pygame.draw.line(screen, YELLOW, (WIDTH/2 - f + x,HEIGHT/2 + AB2), (WIDTH/2 +OA2 ,HEIGHT/2 + AB2), 4) 
+        pygame.draw.line(screen, YELLOW, (WIDTH/2 + OA2,HEIGHT/2 + AB2), (WIDTH/2 + f ,HEIGHT/2), 4)#3eme regle
+        pygame.draw.line(screen, YELLOW, (WIDTH/2 + f ,HEIGHT/2), (WIDTH/2 + f - x2,HEIGHT/2 - AB), 4) 
+        pygame.draw.line(screen, YELLOW, (WIDTH/2 + f - x2,HEIGHT/2 - AB), (WIDTH/2 -OA ,HEIGHT/2 - AB), 4) 
     
     
     pygame.display.flip()
