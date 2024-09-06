@@ -9,7 +9,7 @@ import pickle
 root = tk.Tk()
 root.geometry("300x250")
 root.resizable(False, False)
-root.title('Sign In')
+root.title('Converging-lens')
 
 f = tk.StringVar()
 AB = tk.StringVar()
